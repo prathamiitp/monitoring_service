@@ -22,16 +22,15 @@ git clone https://github.com/prathamiitp/monitoring_service
 ```
 #### 2. Setup Golang : 
 [Installation and documentation](https://go.dev/doc/install)
-#### 3. Setup Database servers : 
-  - First Setup MySQL and Redis system servers from [here](https://github.com/prathamiitp/monitoring_service/edit/master/README.md#database-server-setup-for-system)
-  - Now add their respective Go drivers/ Packages from [here](https://github.com/prathamiitp/monitoring_service/edit/master/README.md#database-driver-to-be-used-in-go)
-#### 4. Set GOPATH and GOROOT variables by adding following lines in `file: .bashrc` for ubuntu inside HOME folder : 
+#### 3. Set GOPATH and GOROOT variables by adding following lines in `file: .bashrc` for ubuntu inside HOME folder : 
 ```
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go/
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 ```
+#### 4. Setup Database servers : 
+  - First Setup MySQL and Redis system servers from database-server-setup-for-system mentioned below.
 #### 5. Run Both database servers on their default port setting : 
 ```
 sudo systemctl start mysql
@@ -54,4 +53,5 @@ Remeber to add the database for both Redis and MySQL with the schema and name us
 ## Work to be done
 - optimize cpu utilization (utilization is high because of infinite loop in worker which make connection to redis to check for any new datqa in queue)
 - cleaner code implimentation (break logging function from worker code into smaller function, also improve the implimentation of graceful shutdown)
+- upload go mod file and create a shell script for all the setup
 - reduce redis connection in worker, try to take up data in bulk from redis(just like done in case of mysql) which is taken unit by unit for now 
