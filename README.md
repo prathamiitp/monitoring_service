@@ -54,4 +54,5 @@ Remeber to add the database for both Redis and MySQL with the schema and name us
 - optimize cpu utilization (utilization is high because of infinite loop in worker which make connection to redis to check for any new datqa in queue)
 - cleaner code implimentation (break logging function from worker code into smaller function, also improve the implimentation of graceful shutdown)
 - upload go mod file and create a shell script for all the setup
+- update readme with testing method for the monitoring service.
 - reduce redis connection in worker, try to take up data in bulk from redis(just like done in case of mysql) which is taken unit by unit for now 
