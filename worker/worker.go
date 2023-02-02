@@ -66,7 +66,7 @@ func connectMysql() {
 
 //logs data to db after 'max' amount of logs are accumulated
 //runs infinitely
-func logToDb() {
+func logToDb(c chan os.Signal) {
 	for {
 		start := time.Now()
 		var arg []interface{}
@@ -95,6 +95,18 @@ func logToDb() {
 		}
 		id, _ := dblog.LastInsertId()
 		fmt.Println("last set of requests logged in db from id: ", id)
+		
+		// stop the loop if a interrupt is recorded;
+		test:=false
+		select{
+			case<-c:
+				test=true;
+			default:
+				continue;
+		}
+		if test {
+			break;
+		}
 	}
 }
 
@@ -106,6 +118,10 @@ func main() {
 	// to keep from running the rest of the programn before connecting to db
 	wg.Wait()
 
+	// to keep code from suddenly exiting, it logs the last processing set of data
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
+	
 	//running the data logger infinitely
 	logToDb()
 }
