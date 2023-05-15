@@ -1,6 +1,6 @@
 <div align="center">  
     
-# Request Monitoring Service
+# Request Monitoring Microservice
 [<img src="https://img.shields.io/badge/Go-00ADD8.svg?style=for-the-badge&logo=Go&logoColor=white"/>](https://go.dev/doc/)
 [<img src="https://img.shields.io/badge/MySQL-4479A1.svg?style=for-the-badge&logo=MySQL&logoColor=white"/>](https://docs.oracle.com/en-us/iaas/mysql-database/index.html)
 [<img src="https://img.shields.io/badge/Redis-DC382D.svg?style=for-the-badge&logo=Redis&logoColor=white"/>](https://redis.io/docs/getting-started/)
